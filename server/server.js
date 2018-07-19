@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5000;
-const pool = require('./modules/pool');
 const bodyParser = require('body-parser');
 const entryRouter = require('./routes/entry.router');
 const projectRouter = require('./routes/project.router');
