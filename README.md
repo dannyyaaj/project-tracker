@@ -27,6 +27,7 @@ CREATE TABLE "projects"
 (
   "id" SERIAL PRIMARY KEY,
   "project_name" VARCHAR(100),
+  "project_owner" VARCHAR(100),
   "completed" BOOLEAN DEFAULT False
 );
 
@@ -37,9 +38,14 @@ CREATE TABLE "entries"
   "project_id" INT REFERENCES "projects",
   "description" VARCHAR(100),
   "date" DATE NOT NULL DEFAULT CURRENT_DATE,
-  "start_time" TIME NOT NULL DEFAULT NOW(),
-  "end_time" TIME NOT NULL
+  "start_time" VARCHAR(20),
+  "end_time" VARCHAR(20),
+  "time_stamp" TIMESTAMPTZ DEFAULT NOW()
 );
-```
 
+-- Dummy data
+INSERT INTO "projects" ("project_name", "project_owner")
+VALUES ('Koala Holla', 'Danny');
 
+INSERT INTO "entries" ("project_id", "description", "start_time", "end_time")
+VALUES ('1', 'Finished MVP', '10:00AM', '2:00PM');
