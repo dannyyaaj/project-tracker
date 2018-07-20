@@ -1,11 +1,12 @@
 <div>
   <h3>Add Entry</h3>
   <div class="input-section">
-    <form action="">
+    <form>
       <input type="text" placeholder="What did you do?" />
       <!-- repeat through list of projects below -->
       <select>
         <option value="">---Project---</option>
+        <option ng-repeat="entry in vm.entries.list" values="{{}}">{{entry.project_name}}</option>
       </select>
       <input type="date" name="date" id="" />
       <input type="time" placeholder="Start Time">
@@ -23,7 +24,14 @@
         <td>Hours</td>
         <td>Action</td>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        <tr ng-repeat="entry in vm.entries.list">
+          <td>{{entry.description}}</td>
+          <td>{{entry.project_name}}</td>
+          <td>{{entry.date | date: 'longDate'}}</td>
+        </tr>
+
+      </tbody>
     </table>
   </div>
 </div>
