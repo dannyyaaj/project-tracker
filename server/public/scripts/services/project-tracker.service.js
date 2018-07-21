@@ -54,6 +54,9 @@ app.service('ProjectTrackerService', ['$http', function ($http) {
   self.removeEntry = function (entryId) {
     $http.delete(`/entry/${entryId}`)
       .then((response) => {
+        swal("Your entry has been deleted!", {
+          icon: "success",
+        });
         self.getEntries();
         self.getProjects();
       })

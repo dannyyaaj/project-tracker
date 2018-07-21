@@ -26,9 +26,6 @@ app.controller('EntryController', ['ProjectTrackerService', function (ProjectTra
       .then((willDelete) => {
         if (willDelete) {
           ProjectTrackerService.removeEntry(entryId);
-          swal("Your entry has been deleted!", {
-            icon: "success",
-          });
         }
       });
   }
