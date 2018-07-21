@@ -5,7 +5,7 @@ let pool = require('../modules/pool');
 router.get('/', (req, res) => {
   console.log('get entries');
   const queryText = `
-SELECT "entries".description, "projects".project_name, "entries".date, "entries".start_time, "entries".end_time, DATE_PART('HOUR', "entries".start_time) as start_hour, DATE_PART('MINUTE', "entries".start_time) as start_minute, DATE_PART('HOUR', "entries".end_time) as end_hour, DATE_PART('MINUTE', "entries".end_time) as end_minute FROM "entries" JOIN "projects" ON "entries".project_id = "projects".id ORDER BY "date";
+SELECT "entries".id,"entries".description, "projects".project_name, "entries".date, "entries".start_time, "entries".end_time, DATE_PART('HOUR', "entries".start_time) as start_hour, DATE_PART('MINUTE', "entries".start_time) as start_minute, DATE_PART('HOUR', "entries".end_time) as end_hour, DATE_PART('MINUTE', "entries".end_time) as end_minute FROM "entries" JOIN "projects" ON "entries".project_id = "projects".id ORDER BY "date";
 `;
   pool.query(queryText)
     .then((result) => {
@@ -28,6 +28,17 @@ VALUES ($1, $2, $3, $4, $5);`;
     })
     .catch((error) => {
       console.log('Error adding entries');
+      res.sendStatus(500);
+    })
+})
+
+router.delete('/:id', (req, res) => {
+  let entryId = req.params.id;
+  pool.query(`DELETE FROM "entries" WHERE "id"=$1;`, [entryId])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
       res.sendStatus(500);
     })
 })

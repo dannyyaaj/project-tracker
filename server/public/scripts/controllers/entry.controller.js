@@ -13,11 +13,25 @@ app.controller('EntryController', ['ProjectTrackerService', function (ProjectTra
     end_time: ''
   };
 
-  self.addEntry = function (newEntry) {
-    ProjectTrackerService.addEntry(newEntry);
+  self.addEntry = ProjectTrackerService.addEntry;
+
+  self.removeEntry = function (entryId) {
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this entry!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          ProjectTrackerService.removeEntry(entryId);
+          swal("Your entry has been deleted!", {
+            icon: "success",
+          });
+        }
+      });
+
   }
-
-  self.removeEntry = ProjectTrackerService.removeEntry;
-
   self.getEntries = ProjectTrackerService.getEntries;
 }]);

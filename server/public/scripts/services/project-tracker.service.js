@@ -51,8 +51,20 @@ app.service('ProjectTrackerService', ['$http', function ($http) {
       });
   }
 
-  self.removeEntry = function () {
-
+  self.removeEntry = function (entryId) {
+    $http.delete(`/entry/${entryId}`)
+      .then((response) => {
+        self.getEntries();
+        self.getProjects();
+      })
+      .catch((error) => {
+        swal({
+          title: "Oops",
+          text: "There was and error with your request!",
+          icon: "warning",
+          button: "Try Again!",
+        });
+      })
   }
 
   self.getProjects = function () {
