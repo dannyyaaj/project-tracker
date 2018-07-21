@@ -90,6 +90,24 @@ app.service('ProjectTrackerService', ['$http', function ($http) {
         alert('Something went wrong!')
       })
   }
+
+  self.removeProject = function (projectId) {
+    $http.delete(`/project/${projectId}`)
+      .then((response) => {
+        swal("Your project has been deleted!", {
+          icon: "success",
+        });
+        self.getProjects();
+      })
+      .catch((error) => {
+        swal({
+          title: "Oops",
+          text: "There was and error with your request!",
+          icon: "warning",
+          button: "Try Again!",
+        });
+      })
+  }
   self.getProjects();
   self.getEntries();
 }])
