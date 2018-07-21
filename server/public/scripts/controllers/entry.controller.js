@@ -1,4 +1,4 @@
-app.controller('EntryController', ['ProjectTrackerService', '$http', function (ProjectTrackerService, $http) {
+app.controller('EntryController', ['ProjectTrackerService', function (ProjectTrackerService) {
   let self = this;
   console.log('Inside EntryController');
 
@@ -12,6 +12,7 @@ app.controller('EntryController', ['ProjectTrackerService', '$http', function (P
     start_time: '',
     end_time: ''
   };
+
 
   self.addEntry = function (newEntry) {
     ProjectTrackerService.addEntry(newEntry);

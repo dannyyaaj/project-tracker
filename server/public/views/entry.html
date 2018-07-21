@@ -6,11 +6,12 @@
       <!-- repeat through list of projects below -->
       <select ng-model="vm.entryToAdd.project_id">
         <option value="">---Project---</option>
-        <option ng-repeat="project in vm.projects.list" value="{{project.id}}">{{project.project_name}}</option>
+        <option ng-repeat="project in vm.projects.list" value="{{project.id}}">
+          {{project.project_name}}</option>
       </select>
       <input type="date" name="date" ng-model="vm.entryToAdd.date" />
-      <input type="time" placeholder="Start Time" ng-model="vm.entryToAdd.start_time">
-      <input type="time" placeholder="End Time" ng-model="vm.entryToAdd.end_time">
+      <input type="time" name="start_time" placeholder="Start Time" ng-model="vm.entryToAdd.start_time">
+      <input type="time" name="end_time" placeholder="End Time" ng-model="vm.entryToAdd.end_time">
       <input type="submit" />
     </form>
   </div>
@@ -28,13 +29,13 @@
         <tr ng-repeat="entry in vm.entries.list">
           <td>{{entry.description}}</td>
           <td>{{entry.project_name}}</td>
-          <td>{{entry.date | date: 'longDate'}}</td>
-          <td></td>
+          <td>{{entry.date | date: 'shortDate'}}</td>
+          <td>{{(entry.end_hour + (entry.end_minute/60)) - (entry.start_hour + (entry.start_minute/60))}}</td>
           <td>
-            <button>Delete</button>
+            <button ng-click="">Delete</button>
           </td>
           <td>
-            <button>Edit</button>
+            <button ng-click="">Edit</button>
           </td>
         </tr>
 
