@@ -19,7 +19,7 @@
 CREATE DATABASE "project_tracker";
 ```
 
-2. Creat tables
+2. Create tables
 
 ```sql
 -- Project Table
