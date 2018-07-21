@@ -4,7 +4,7 @@ let pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
   console.log('get projects');
-  const queryText = `SELECT "projects".id, "projects".project_name, "projects".project_owner, EXTRACT(HOUR FROM SUM("entries".end_time - "entries".start_time)) as total_hours
+  const queryText = `SELECT "projects".project_name, "projects".project_owner, DATE_PART('HOUR', SUM("entries".end_time - "entries".start_time)) as total_hours, DATE_PART('MINUTE', SUM("entries".end_time - "entries".start_time)) as total_minutes
 FROM "projects" LEFT OUTER JOIN "entries" ON "entries".project_id = "projects".id
 GROUP BY "projects".id
 ORDER BY total_hours DESC NULLS LAST, "projects".project_name;
