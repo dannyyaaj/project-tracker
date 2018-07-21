@@ -31,7 +31,6 @@ app.controller('EntryController', ['ProjectTrackerService', function (ProjectTra
           });
         }
       });
-
   }
   self.getEntries = ProjectTrackerService.getEntries;
 }]);
