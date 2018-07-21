@@ -5,4 +5,6 @@ app.controller('ProjectController', ['ProjectTrackerService', function (ProjectT
   self.projects = ProjectTrackerService.projects;
 
   self.getProjects = ProjectTrackerService.getProjects;
+
+  self.addProject = ProjectTrackerService.addProject;
 }]);
