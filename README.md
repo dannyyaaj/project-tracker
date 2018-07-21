@@ -27,7 +27,6 @@ CREATE TABLE "projects"
 (
   "id" SERIAL PRIMARY KEY,
   "project_name" VARCHAR(100),
-  "project_owner" VARCHAR(100),
   "completed" BOOLEAN DEFAULT False
 );
 
@@ -40,7 +39,6 @@ CREATE TABLE "entries"
   "date" DATE NOT NULL DEFAULT CURRENT_DATE,
   "start_time" VARCHAR(20),
   "end_time" VARCHAR(20),
-  "time_stamp" TIMESTAMPTZ DEFAULT NOW()
 );
 
 -- Dummy data
