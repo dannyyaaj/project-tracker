@@ -13,9 +13,11 @@ app.controller('EntryController', ['ProjectTrackerService', function (ProjectTra
     end_time: ''
   };
 
-
   self.addEntry = function (newEntry) {
     ProjectTrackerService.addEntry(newEntry);
   }
+
+  self.removeEntry = ProjectTrackerService.removeEntry;
+
   self.getEntries = ProjectTrackerService.getEntries;
 }]);

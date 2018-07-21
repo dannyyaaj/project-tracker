@@ -2,16 +2,16 @@
   <h3>Add Entry</h3>
   <div class="input-section">
     <form ng-submit="vm.addEntry(vm.entryToAdd)">
-      <input type="text" placeholder="What did you do?" ng-model="vm.entryToAdd.description" />
+      <input type="text" placeholder="What did you do?" ng-model="vm.entryToAdd.description" aria-required="true" />
       <!-- repeat through list of projects below -->
-      <select ng-model="vm.entryToAdd.project_id">
+      <select ng-model="vm.entryToAdd.project_id" aria-required="true">
         <option value="">---Project---</option>
         <option ng-repeat="project in vm.projects.list" value="{{project.id}}">
           {{project.project_name}}</option>
       </select>
-      <input type="date" name="date" ng-model="vm.entryToAdd.date" />
-      <input type="time" name="start_time" placeholder="Start Time" ng-model="vm.entryToAdd.start_time">
-      <input type="time" name="end_time" placeholder="End Time" ng-model="vm.entryToAdd.end_time">
+      <input type="date" name="date" ng-model="vm.entryToAdd.date" aria-required="true" />
+      <input type="time" name="start_time" placeholder="Start Time" ng-model="vm.entryToAdd.start_time" aria-required="true">
+      <input type="time" name="end_time" placeholder="End Time" ng-model="vm.entryToAdd.end_time" aria-required="true">
       <input type="submit" />
     </form>
   </div>
@@ -30,12 +30,13 @@
           <td>{{entry.description}}</td>
           <td>{{entry.project_name}}</td>
           <td>{{entry.date | date: 'shortDate'}}</td>
-          <td>{{(entry.end_hour + (entry.end_minute/60)) - (entry.start_hour + (entry.start_minute/60))}}</td>
-          <td>
-            <button ng-click="">Delete</button>
+          <td>{{ ((entry.end_hour + (entry.end_minute/60)) - (entry.start_hour + (entry.start_minute/60))).toFixed(2)}}
           </td>
           <td>
-            <button ng-click="">Edit</button>
+            <button ng-click="vm.removeEntry(entry.id)">Delete</button>
+          </td>
+          <td>
+            <button ng-click="vm.editEntry(entry)">Edit</button>
           </td>
         </tr>
 

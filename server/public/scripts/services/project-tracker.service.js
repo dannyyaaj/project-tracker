@@ -28,13 +28,31 @@ app.service('ProjectTrackerService', ['$http', function ($http) {
     console.log(entryToAdd, 'object to be posted');
     $http.post('/entry', entryToAdd)
       .then((response) => {
+        entryToAdd.description = null;
+        entryToAdd.date = null;
+        entryToAdd.start_time = null;
+        entryToAdd.end_time = null;
+        swal({
+          title: "Yay!",
+          text: "Entry Added!",
+          icon: "success",
+          button: "Continue!",
+        });
         self.getEntries();
         self.getProjects();
       })
       .catch((error) => {
-        console.log('error making entry post request', error);
-        alert('Something went wrong! Check the server.');
+        swal({
+          title: "Oops",
+          text: "There was and error with your request!",
+          icon: "warning",
+          button: "Try Again!",
+        });
       });
+  }
+
+  self.removeEntry = function () {
+
   }
 
   self.getProjects = function () {
@@ -45,6 +63,16 @@ app.service('ProjectTrackerService', ['$http', function ($http) {
       })
       .catch(function (error) {
         console.log('error on function getProjects', error);
+      })
+  }
+
+  self.addProject = function (projectToAdd) {
+    $http.post('/project', projectToAdd)
+      .then((response) => {
+        self.getProjects();
+      }).catch((error) => {
+        console.log('error making projects request', error);
+        alert('Something went wrong!')
       })
   }
   self.getProjects();
