@@ -44,7 +44,7 @@ app.service('ProjectTrackerService', ['$http', function ($http) {
       .catch((error) => {
         swal({
           title: "Oops",
-          text: "There was and error with your request!",
+          text: "There was an error with your request!",
           icon: "warning",
           button: "Try Again!",
         });
@@ -63,7 +63,7 @@ app.service('ProjectTrackerService', ['$http', function ($http) {
       .catch((error) => {
         swal({
           title: "Oops",
-          text: "There was and error with your request!",
+          text: "There was an error with your request!",
           icon: "warning",
           button: "Try Again!",
         });
@@ -102,12 +102,29 @@ app.service('ProjectTrackerService', ['$http', function ($http) {
       .catch((error) => {
         swal({
           title: "Oops",
-          text: "There was and error with your request!",
+          text: "There was an error with your request!",
           icon: "warning",
           button: "Try Again!",
         });
       })
   }
+
+  self.editEntry = function (entryToEdit, id) {
+    // data to update  
+    $http.put(`/entry/${id}`, entryToEdit)
+      .then((response) => {
+        self.getEntries();
+      })
+      .catch((error) => {
+        swal({
+          title: "Oops",
+          text: "There was an error with your request!",
+          icon: "warning",
+          button: "Try Again!",
+        });
+      })
+  }
+
   self.getProjects();
   self.getEntries();
 }])
