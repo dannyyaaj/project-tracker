@@ -9,9 +9,8 @@
         <option ng-repeat="project in vm.projects.list" value="{{project.id}}">
           {{project.project_name}}</option>
       </select>
-      <input type="date" name="date" ng-model="vm.entryToAdd.date" aria-required="true" />
-      <input type="time" name="start_time" placeholder="Start Time" ng-model="vm.entryToAdd.start_time" aria-required="true">
-      <input type="time" name="end_time" placeholder="End Time" ng-model="vm.entryToAdd.end_time" aria-required="true">
+      <input type="datetime-local" name="start_time" placeholder="Start Time" ng-model="vm.entryToAdd.start_time" aria-required="true">
+      <input type="datetime-local" name="end_time" placeholder="End Time" ng-model="vm.entryToAdd.end_time" aria-required="true">
       <input type="submit" />
     </form>
   </div>

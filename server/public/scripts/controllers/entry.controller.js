@@ -8,7 +8,7 @@ app.controller('EntryController', ['ProjectTrackerService', function (ProjectTra
   self.entryToAdd = {
     description: '',
     project_id: '',
-    date: '',
+    // date: '',
     start_time: '',
     end_time: ''
   };
