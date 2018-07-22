@@ -23,10 +23,12 @@ app.controller('EntryController', ['ProjectTrackerService', function (ProjectTra
   }
 
   self.setUpEdit = function (entryToEdit) {
+    self.showEdit = !self.showEdit;
     entryToEdit.showEdit = !entryToEdit.showEdit;
   }
   self.editEntry = function (entryToEdit) {
     entryToEdit.showEdit = !entryToEdit.showEdit;
+    self.showEdit = !self.showEdit;
     self.updateEntry(entryToEdit);
   }
 

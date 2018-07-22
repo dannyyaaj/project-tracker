@@ -23,24 +23,51 @@
         <td>Project</td>
         <td>Date</td>
         <td>Hours</td>
-        <td>Action</td>
+        <td>Edit</td>
+        <td>Delete</td>
       </thead>
       <tbody>
         <tr ng-repeat="entry in vm.entries.list">
-          <td>{{entry.description}}</td>
-          <td>{{entry.project_name}}</td>
-          <td>{{entry.date | date: 'shortDate'}}</td>
-          <td>{{ ((entry.end_hour + (entry.end_minute/60)) - (entry.start_hour + (entry.start_minute/60))).toFixed(2)}}
+
+          <td ng-if="!entry.showEdit">{{entry.description}}</td>
+
+          <td>
+            <input ng-if="entry.showEdit" type="text" placeholder="What did you do?" ng-model="entry.description" aria-required="true"
+            />
+          </td>
+
+          <td ng-if="!entry.showEdit">{{entry.project_name}}</td>
+
+          <td>
+            <select ng-if="entry.showEdit" ng-model="entry.project_id" aria-required="true">
+              <option value="">---Project---</option>
+              <option ng-repeat="project in vm.projects.list" value="{{project.id}}">
+                {{project.project_name}}</option>
+            </select>
+          </td>
+
+          <td ng-if="!entry.showEdit">{{entry.date | date: 'shortDate'}}</td>
+
+          <td>
+            <input ng-if="entry.showEdit" type="date" name="date" ng-model="entry.date" aria-required="true" />
+          </td>
+
+          <td ng-if="!entry.showEdit">{{ ((entry.end_hour + (entry.end_minute/60)) - (entry.start_hour + (entry.start_minute/60))).toFixed(2)}}
+          </td>
+          <td ng-if="entry.showEdit">{{ ((entry.end_hour + (entry.end_minute/60)) - (entry.start_hour + (entry.start_minute/60))).toFixed(2)}}
+          </td>
+          <td>
+            <button ng-if="!entry.showEdit" ng-click="vm.setUpEdit(entry)">Edit</button>
+          </td>
+          <td>
+            <button ng-if="entry.showEdit" ng-click="vm.editEntry(entry)">Done</button>
           </td>
           <td>
             <button ng-click="vm.removeEntry(entry.id)">Delete</button>
           </td>
-          <td>
-            <button ng-click="vm.editEntry(entry)">Edit</button>
-          </td>
-        </tr>
 
+        </tr>
       </tbody>
     </table>
+
   </div>
-</div>
