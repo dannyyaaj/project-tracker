@@ -5,7 +5,7 @@ let pool = require('../modules/pool');
 router.get('/', (req, res) => {
   console.log('get entries');
   const queryText = `
-SELECT "projects".project_name, "entries".description, "entries".date, "entries".start_time, "entries".end_time, "entries".time_stamp, DATE_PART('HOUR', "entries".start_time) as start_hour, DATE_PART('MINUTE', "entries".start_time) as start_minute, DATE_PART('HOUR', "entries".end_time) as end_hour, DATE_PART('MINUTE', "entries".end_time) as end_minute
+SELECT "projects".project_name, "entries".id, "entries".description, "entries".date, "entries".start_time, "entries".end_time, "entries".time_stamp, DATE_PART('HOUR', "entries".start_time) as start_hour, DATE_PART('MINUTE', "entries".start_time) as start_minute, DATE_PART('HOUR', "entries".end_time) as end_hour, DATE_PART('MINUTE', "entries".end_time) as end_minute
 FROM "entries"
 JOIN "projects"
 ON "entries".project_id = "projects".id
