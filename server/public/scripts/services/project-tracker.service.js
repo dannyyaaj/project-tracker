@@ -109,9 +109,9 @@ app.service('ProjectTrackerService', ['$http', function ($http) {
       })
   }
 
-  self.editEntry = function (entryToEdit, id) {
+  self.updateEntry = function (entryToEdit) {
     // data to update  
-    $http.put(`/entry/${id}`, entryToEdit)
+    $http.put(`/entry/${entryToEdit.id}`, entryToEdit)
       .then((response) => {
         self.getEntries();
       })
