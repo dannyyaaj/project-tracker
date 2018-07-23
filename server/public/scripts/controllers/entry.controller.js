@@ -1,4 +1,4 @@
-app.controller('EntryController', ['ProjectTrackerService', function (ProjectTrackerService) {
+app.controller('EntryController', ['ProjectTrackerService', '$mdToast', '$animate', function (ProjectTrackerService, $mdToast, $animate) {
   let self = this;
   self.entries = ProjectTrackerService.entries;
   self.projects = ProjectTrackerService.projects;
@@ -11,7 +11,7 @@ app.controller('EntryController', ['ProjectTrackerService', function (ProjectTra
     project_id: '',
     date: '',
     start_time: '',
-    end_time: ''
+    end_time: '',
   };
 
   self.addEntry = function (entry) {

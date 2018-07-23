@@ -1,8 +1,10 @@
 <h3>Add Project</h3>
-<form ng-submit="vm.addProject(vm.projectToAdd)">
-  <input type="text" ng-model="vm.projectToAdd.name" placeholder="Enter project name" />
-  <input type="submit" />
-</form>
+<div class="input-section" layout="row" layout-align="center center">
+  <form ng-submit="vm.addProject(vm.projectToAdd)">
+    <input flex="70" type="text" ng-model="vm.projectToAdd.name" placeholder="Enter project name" />
+    <input type="submit" />
+  </form>
+</div>
 <div class="projectSection">
   <h3>Projects</h3>
   <table class="projectsTable">
