@@ -23,7 +23,6 @@ app.controller('EntryController', ['ProjectTrackerService', '$mdToast', '$animat
       });
     } else {
       ProjectTrackerService.addEntry(entry);
-
     }
   }
 

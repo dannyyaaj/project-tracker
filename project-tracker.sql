@@ -17,9 +17,10 @@ CREATE TABLE "entries"
   "id" SERIAL PRIMARY KEY,
   "project_id" INT REFERENCES "projects",
   "description" VARCHAR(100),
-  "date" DATE NOT NULL DEFAULT CURRENT_DATE,
-  "start_time" TIME NOT NULL DEFAULT NOW(),
-  "end_time" TIME NOT NULL
+  "date" DATE DEFAULT CURRENT_DATE,
+  "start_time" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  "end_time" TIMESTAMPTZ NOT NULL ,
+  "time_stamp" TIMESTAMPTZ DEFAULT NOW()
 );
 
 -- Dummy Data
