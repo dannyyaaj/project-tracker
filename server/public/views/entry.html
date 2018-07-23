@@ -42,20 +42,18 @@
   </div>
 
   <!-- Entries Table -->
-  <md-table-container layout="column" layout-wrap flex layout-align="start stretch" layout-align-md>
+  <md-table-container layout="column" layout-wrap layout-align="start center" layout-align-md>
     <table md-table class="entriesTable" md-progress="promise">
-
       <thead md-head>
-        <tr md-row>
-          <th md-column md-order-by="entry.name">Entry</th>
-          <th md-column md-order-by="entry.project_name">Project</th>
-          <th md-column md-order-by="entry.date">Date</th>
-          <th md-column md-numeric md-order-by="((entry.end_hour + (entry.end_minute/60)) - (entry.start_hour + (entry.start_minute/60))).toFixed(2)}">Hours</th>
-          <th md-column>Edit</th>
-          <th md-column>Delete</th>
-        </tr>
-      </thead>
 
+        <th md-column md-order-by="entry.name">Entry</th>
+        <th md-column md-order-by="entry.project_name">Project</th>
+        <th md-column md-order-by="entry.date">Date</th>
+        <th md-column md-numeric md-order-by="((entry.end_hour + (entry.end_minute/60)) - (entry.start_hour + (entry.start_minute/60))).toFixed(2)}">Hours</th>
+        <th md-column>Edit</th>
+        <th md-column>Delete</th>
+
+      </thead>
       <tbody md-body>
         <tr md-row md-select="entry" ng-repeat="entry in vm.entries.list">
           <td md-cell ng-if="!entry.showEdit">{{entry.description}}</td>
