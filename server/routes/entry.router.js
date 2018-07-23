@@ -9,7 +9,7 @@ SELECT "projects".project_name, "entries".id, "entries".description, "entries".d
 FROM "entries"
 JOIN "projects"
 ON "entries".project_id = "projects".id
-ORDER BY "entries".time_stamp DESC;
+ORDER BY "entries".date DESC;
 `;
   pool.query(queryText)
     .then((result) => {

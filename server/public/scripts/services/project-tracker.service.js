@@ -84,6 +84,13 @@ app.service('ProjectTrackerService', ['$http', function ($http) {
   self.addProject = function (projectToAdd) {
     $http.post('/project', projectToAdd)
       .then((response) => {
+        projectToAdd.name = null;
+        swal({
+          title: "Yay!",
+          text: "Project Added!",
+          icon: "success",
+          button: "Continue!",
+        });
         self.getProjects();
       }).catch((error) => {
         console.log('error making projects request', error);

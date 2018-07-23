@@ -19,3 +19,13 @@ app.config(function ($routeProvider) {
       template: '<h1>404</h1>'
     })
 })
+
+app.config(function ($mdThemingProvider) {
+  $mdThemingProvider
+    .theme('default')
+    .primaryPalette('light-blue')
+    .accentPalette('purple')
+    .warnPalette('red')
+    .backgroundPalette('grey');
+  $mdThemingProvider.alwaysWatchTheme(true);
+});
