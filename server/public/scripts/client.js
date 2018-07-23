@@ -1,4 +1,4 @@
-const app = angular.module('ProjectTrackerApp', ['ngRoute', 'ngMaterial', "ngMessages", "md.data.table"]);
+const app = angular.module('ProjectTrackerApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'md.data.table']);
 
 app.config(function ($routeProvider) {
 

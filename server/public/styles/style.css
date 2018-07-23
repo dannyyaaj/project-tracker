@@ -4,28 +4,14 @@
 
 body {
   background: #DDD7CE;
+  font-size: 1.25rem;
+}
+
+
+.historySection {
+  margin-top: 2rem;
 }
 
 .form {
   margin: 1rem 0;
-}
-
-.form_submit:hover {
-  cursor: pointer;
-  opacity: 0.9;
-}
-
-.submit_button {
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  background-color: rgb(63, 81, 181);
-  padding: 0 6px 0 6px;
-  margin: 6px 8px 6px 8px;
-  min-width: 88px;
-  border-radius: 3px;
-  font-size: 14px;
-  text-align: center;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: none;
-  outline: none;
 }
