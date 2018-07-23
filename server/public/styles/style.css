@@ -1,3 +1,17 @@
 .navSection {
   text-align: center;
 }
+
+body {
+  background: #DDD7CE;
+  font-size: 1.25rem;
+}
+
+
+.historySection {
+  margin-top: 2rem;
+}
+
+.form {
+  margin: 1rem 0;
+}

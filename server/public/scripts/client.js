@@ -1,4 +1,4 @@
-const app = angular.module('ProjectTrackerApp', ['ngRoute']);
+const app = angular.module('ProjectTrackerApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'md.data.table']);
 
 app.config(function ($routeProvider) {
 
@@ -15,5 +15,7 @@ app.config(function ($routeProvider) {
       templateUrl: '../views/report.html',
       controller: 'ReportController as vm'
     })
-    .otherwise({template: '<h1>404</h1>'})
+    .otherwise({
+      template: '<h1>404</h1>'
+    })
 })
