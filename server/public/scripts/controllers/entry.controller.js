@@ -1,19 +1,46 @@
-app.controller('EntryController', ['ProjectTrackerService', function (ProjectTrackerService) {
+app.controller('EntryController', ['ProjectTrackerService', '$mdToast', '$animate', function (ProjectTrackerService, $mdToast, $animate) {
   let self = this;
-  console.log('Inside EntryController');
-
   self.entries = ProjectTrackerService.entries;
   self.projects = ProjectTrackerService.projects;
+  self.showEdit = false;
 
+  //initialize new object to send
   self.entryToAdd = {
     description: '',
     project_id: '',
     date: '',
     start_time: '',
-    end_time: ''
+    end_time: '',
   };
 
-  self.addEntry = ProjectTrackerService.addEntry;
+  self.addEntry = function (entry) {
+    if (entry.description == '' | entry.date == '' | entry.start_time == '' | entry.end_time == '') {
+      swal({
+        title: "Oops",
+        text: "Please complete all inputs before continuing.",
+        icon: "warning",
+        button: "Try Again!",
+      });
+    } else {
+      ProjectTrackerService.addEntry(entry);
+
+    }
+  }
+
+  self.setUpEdit = function (entryToEdit) {
+    self.showEdit = !self.showEdit;
+    entryToEdit.showEdit = !entryToEdit.showEdit;
+  }
+  self.editEntry = function (entryToEdit) {
+    entryToEdit.showEdit = !entryToEdit.showEdit;
+    self.showEdit = !self.showEdit;
+    self.updateEntry(entryToEdit);
+  }
+
+  self.updateEntry = function (entryToEdit) {
+
+    ProjectTrackerService.updateEntry(entryToEdit);
+  }
 
   self.removeEntry = function (entryId) {
     swal({
@@ -29,5 +56,7 @@ app.controller('EntryController', ['ProjectTrackerService', function (ProjectTra
         }
       });
   }
+
   self.getEntries = ProjectTrackerService.getEntries;
+
 }]);

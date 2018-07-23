@@ -9,7 +9,7 @@ SELECT "projects".project_name, "entries".id, "entries".description, "entries".d
 FROM "entries"
 JOIN "projects"
 ON "entries".project_id = "projects".id
-ORDER BY "entries".time_stamp DESC;
+ORDER BY "entries".date DESC;
 `;
   pool.query(queryText)
     .then((result) => {
@@ -48,4 +48,18 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+router.put('/:id', (req, res) => {
+  const newEntry = req.body;
+  const entryId = req.params.id;
+  pool.query(`UPDATE "entries" SET "description" = $1, "date" = $2, "start_time" = $3, "end_time" = $4
+WHERE "id" = $5;`, [newEntry.description, newEntry.date, newEntry.start_time, newEntry.end_time, entryId])
+    .then(results => {
+      console.log(results);
+      res.sendStatus(200);
+    })
+    .catch(error => {
+      console.log('/crew PUT error:', error);
+      res.sendStatus(500);
+    });
+});
 module.exports = router;

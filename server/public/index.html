@@ -5,31 +5,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- AngularJS and Angular-Route -->
   <script src="vendors/angular.min.js"></script>
   <script src="vendors/angular-route.min.js"></script>
+  <!-- Angular Material JS -->
   <script src="vendors/sweetalert.min.js"></script>
+  <script src="vendors/angular-animate.min.js"></script>
+  <script src="vendors/angular-aria.min.js"></script>
+  <script src="vendors/angular-material.min.js"></script>
+  <script src="vendors/angular-messages.min.js"></script>
+  <script src="vendors/md-data-table.min.js"></script>
+  <!-- Client, Services, Controllers -->
   <script src="scripts/client.js"></script>
   <script src="scripts/services/project-tracker.service.js"></script>
   <script src="scripts/controllers/entry.controller.js"></script>
   <script src="scripts/controllers/project.controller.js"></script>
   <script src="scripts/controllers/report.controller.js"></script>
+  <!-- CSS + Angular Material CSS -->
+  <link rel="stylesheet" href="vendors/angular-material.min.css">
   <link rel="stylesheet" href="styles/style.css">
-  <title>Project Tracker</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <title>Project Progress Tracker</title>
 </head>
 
 <body ng-app="ProjectTrackerApp">
 
-  <head>
-  </head>
-  <main>
-    <div ng-include src="'views/templates/nav.html'">
+  <header>
 
-    </div>
+  </header>
+  <main>
+    <!-- Navigation Bar -->
+    <div ng-include src="'views/templates/nav.html'"></div>
+
+    <!-- View from Controllers -->
     <ng-view>
 
     </ng-view>
 
   </main>
+
 </body>
 
 </html>

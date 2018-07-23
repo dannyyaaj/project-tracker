@@ -1,3 +1,11 @@
 .navSection {
   text-align: center;
 }
+
+body {
+  font-size: 1.25rem;
+}
+
+.historySection {
+  margin-top: 2rem;
+}
