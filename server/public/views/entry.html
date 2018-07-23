@@ -57,8 +57,8 @@
       </thead>
 
       <tbody md-body>
-        <tr md-row md-select="entry" ng-repeat="entry in vm.entries.list ">
-          <td ng-if="!entry.showEdit">{{entry.description}}</td>
+        <tr md-row md-select="entry" ng-repeat="entry in vm.entries.list">
+          <td md-cell ng-if="!entry.showEdit">{{entry.description}}</td>
           <td md-cell>
             <md-input-container class="md-block" flex>
               <input ng-if="entry.showEdit" type="text" ng-model="entry.description" aria-required="true" />
@@ -73,21 +73,21 @@
               </md-select>
             </md-input-container>
           </td>
-          <td ng-if="!entry.showEdit">{{entry.date | date: 'shortDate'}}</td>
-          <td>
+          <td md-cell ng-if="!entry.showEdit">{{entry.date | date: 'shortDate'}}</td>
+          <td md-cell>
             <md-input-container class="md-block" flex>
               <md-datepicker ng-if="entry.showEdit" type="date" ng-model="vm.entryToAdd.date" aria-required="true" placeholder="New date"
                 aria-label="Enter Date"></md-datepicker>
             </md-input-container>
           </td>
-          <td>{{ ((entry.end_hour + (entry.end_minute/60)) - (entry.start_hour + (entry.start_minute/60))).toFixed(2)}}</td>
-          <td>
+          <td md-cell>{{ ((entry.end_hour + (entry.end_minute/60)) - (entry.start_hour + (entry.start_minute/60))).toFixed(2)}}</td>
+          <td md-cell>
             <md-button class="md-raised md-accent md-hue-2" ng-if="!entry.showEdit" ng-click="vm.setUpEdit(entry)">Edit</md-button>
           </td>
-          <td>
+          <td md-cell>
             <md-button class="md-raised md-primary md-hue-2" ng-if="entry.showEdit" ng-click="vm.editEntry(entry)">Done</md-button>
           </td>
-          <td>
+          <td md-cell>
             <md-button class="md-raised md-warn md-hue-2" ng-click="vm.removeEntry(entry.id)">Delete</md-button>
           </td>
         </tr>
