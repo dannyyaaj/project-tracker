@@ -16,7 +16,6 @@ app.service('ProjectTrackerService', ['$http', function ($http) {
     $http.get('/entry')
       .then((response) => {
         self.entries.list = response.data;
-        console.log(response.data, 'entries');
       })
       .catch(function (error) {
         console.log('error on function getEntries', error);

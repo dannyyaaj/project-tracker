@@ -78,7 +78,7 @@
                 aria-label="Enter Date"></md-datepicker>
             </md-input-container>
           </td>
-          <td md-cell>{{ ((entry.end_hour + (entry.end_minute/60)) - (entry.start_hour + (entry.start_minute/60))).toFixed(2)}}</td>
+          <td md-cell>{{((entry.end_hour + (entry.end_minute/60)) - (entry.start_hour + (entry.start_minute/60))).toFixed(2)}}</td>
           <td md-cell>
             <md-button class="md-raised md-accent md-hue-2" ng-if="!entry.showEdit" ng-click="vm.setUpEdit(entry)">Edit</md-button>
           </td>
